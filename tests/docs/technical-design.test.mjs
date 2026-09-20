@@ -16,6 +16,7 @@ const artifacts = [
   'docs/changes/CHG-20260920-001.md',
   'docs/changes/CHG-20260920-002.md',
   'docs/changes/CHG-20260920-003.md',
+  'docs/changes/CHG-20260920-004.md',
   'AGENTS.md',
   'README.md',
 ];
@@ -202,4 +203,55 @@ test('Agent IPC 使用分阶段结果与当前组合回执保存', () => {
     assert.ok(!row(command).includes('callReceiptId'), '不能仍要求旧式调用回执');
   }
   assertScenario('TC-IPC-03', ['SSE', '新链', '两次', '零']);
+});
+
+test('AGENTS 提供验收规格、工程门禁和相关设计的任务入口', () => {
+  const text = read('AGENTS.md');
+  const refs = [
+    `${base}testing_strategy.md`,
+    `${base}traceability.json`,
+    `${base}decisions.md`,
+    'docs/changes/TEMPLATE.md',
+    ...['td-architecture', 'td-storage', 'td-http', 'td-sandbox', 'td-trace', 'td-recovery', 'td-ipc', 'td-security', 'td-milestones']
+      .map((anchor) => `${base}evalit_v001_technical_design.md#${anchor}`),
+  ];
+  for (const ref of refs) assert.ok(text.includes(`](${ref})`), `AGENTS 缺少入口 ${ref}`);
+  for (const phrase of ['RED', 'GREEN', 'macOS', '受保护基线', '默认禁止真实外网']) {
+    assert.ok(text.includes(phrase), `AGENTS 未提示工程约束 ${phrase}`);
+  }
+});
+
+test('AGENTS 保留最新隔离、运行与 Cloud 语义约束', () => {
+  const text = read('AGENTS.md');
+  for (const phrase of [
+    'Main broker', 'SQLite 唯一写者', 'Renderer 不直接访问文件或网络',
+    'QuickJS WASM', '纯内存 CompilerHost', '独立阶段 CAS', 'safeStorage',
+    'Trace 自身的 Metadata', '节点私有 Metadata', '不自动重试', '不在崩溃后续跑',
+    '原型', 'miniconda', '未经本次任务授权不自动 commit/push',
+  ]) assert.ok(text.includes(phrase), `AGENTS 缺少已有约束 ${phrase}`);
+});
+
+test('README 基线、选型和未实施状态与技术设计一致', () => {
+  const text = read('README.md');
+  const design = read(`${base}evalit_v001_technical_design.md`);
+  const latestVersion = [...design.matchAll(/^\| (techv_\d+\.\d+) \|/gm)].at(-1)?.[1];
+  assert.ok(latestVersion, '主设计需有文档版本历史');
+  assert.ok(text.includes(latestVersion), 'README 未指向最新技术设计版本');
+  assert.ok(text.includes(matrix().baseline.prd), 'README 的 PRD 基线缺失');
+  for (const phrase of ['规划能力', 'M0 尚未实施', '没有可启动的桌面应用', '产品验收规格', 'QuickJS WASM', 'pnpm workspace']) {
+    assert.ok(text.includes(phrase), `README 缺少状态/选型说明 ${phrase}`);
+  }
+});
+
+test('README 区分当前校验命令、开发环境和待验证前提', () => {
+  const text = read('README.md');
+  const commands = [...text.matchAll(/^```(?:sh|bash)\n([\s\S]*?)^```/gm)]
+    .flatMap((match) => match[1].trim().split('\n'));
+  assert.deepEqual(commands, ['node --test tests/docs/technical-design.test.mjs'], '当前只能列出已存在的可运行命令');
+  for (const anchor of ['td-milestones', 'td-open-items', 'td-security']) {
+    assert.ok(text.includes(`](${base}evalit_v001_technical_design.md#${anchor})`), `README 缺少 ${anchor} 入口`);
+  }
+  for (const phrase of ['Node 24 LTS', '最终安装包', '不是全库加密', 'Mock', 'CHG-20260920-003']) {
+    assert.ok(text.includes(phrase), `README 缺少边界说明 ${phrase}`);
+  }
 });
