@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "prd": "docv_0.3",
+    "git": "a58d008",
+    "date": "2026-09-20",
+    "langfuse": "cloud"
+  },
+  "productTestsStatus": "specified_not_implemented",
+  "traceAssociation": {
+    "lookupScope": "trace_metadata",
+    "observationSelection": "after_trace_resolution",
+    "rootObservationRequired": false,
+    "observationPrivateMetadataFallback": false,
+    "adapterSemanticVerificationRequired": true
+  },
+  "features": [
+    {
+      "id": "func_1",
+      "name": "Langfuse 项目管理",
+      "designs": [
+        "evalit_v001_technical_design.md#td-langfuse",
+        "evalit_v001_technical_design.md#td-security"
+      ],
+      "tests": [
+        "TC-LF-01",
+        "TC-LF-05",
+        "TC-LIFE-02"
+      ]
+    },
+    {
+      "id": "func_2",
+      "name": "LLM 管理",
+      "designs": [
+        "evalit_v001_technical_design.md#td-llm",
+        "evalit_v001_technical_design.md#td-security"
+      ],
+      "tests": [
+        "TC-LLM-01",
+        "TC-LLM-03",
+        "TC-LIFE-02"
+      ]
+    },
+    {
+      "id": "func_3",
+      "name": "测试集管理",
+      "designs": [
+        "evalit_v001_technical_design.md#td-dataset",
+        "evalit_v001_technical_design.md#td-plan"
+      ],
+      "tests": [
+        "TC-LIFE-01",
+        "TC-DATA-03"
+      ]
+    },
+    {
+      "id": "func_4",
+      "name": "Langfuse 测试集关联",
+      "designs": [
+        "evalit_v001_technical_design.md#td-dataset",
+        "evalit_v001_technical_design.md#td-langfuse"
+      ],
+      "tests": [
+        "TC-LF-02",
+        "TC-LF-03",
+        "TC-LF-04"
+      ]
+    },
+    {
+      "id": "func_5",
+      "name": "本地 CSV 导入",
+      "designs": [
+        "evalit_v001_technical_design.md#td-dataset",
+        "evalit_v001_technical_design.md#td-mapping"
+      ],
+      "tests": [
+        "TC-DATA-01",
+        "TC-DATA-02",
+        "TC-DATA-03",
+        "TC-DATA-04"
+      ]
+    },
+    {
+      "id": "func_6",
+      "name": "评估器管理",
+      "designs": [
+        "evalit_v001_technical_design.md#td-data",
+        "evalit_v001_technical_design.md#td-plan"
+      ],
+      "tests": [
+        "TC-LIFE-01",
+        "TC-VER-03"
+      ]
+    },
+    {
+      "id": "func_7",
+      "name": "代码评估器创建",
+      "designs": [
+        "evalit_v001_technical_design.md#td-sandbox",
+        "evalit_v001_technical_design.md#td-llm"
+      ],
+      "tests": [
+        "TC-SB-01",
+        "TC-SB-02",
+        "TC-SB-03",
+        "TC-SB-04",
+        "TC-SB-05",
+        "TC-SB-06",
+        "TC-OUT-01",
+        "TC-OUT-02"
+      ]
+    },
+    {
+      "id": "func_8",
+      "name": "LLM 评估器创建",
+      "designs": [
+        "evalit_v001_technical_design.md#td-llm"
+      ],
+      "tests": [
+        "TC-LLM-02",
+        "TC-LLM-03",
+        "TC-OUT-01",
+        "TC-OUT-02",
+        "TC-OUT-03"
+      ]
+    },
+    {
+      "id": "func_9",
+      "name": "评估对象管理",
+      "designs": [
+        "evalit_v001_technical_design.md#td-data",
+        "evalit_v001_technical_design.md#td-plan"
+      ],
+      "tests": [
+        "TC-LIFE-01"
+      ]
+    },
+    {
+      "id": "func_10",
+      "name": "Agent 创建与验证",
+      "designs": [
+        "evalit_v001_technical_design.md#td-http",
+        "evalit_v001_technical_design.md#td-sse",
+        "evalit_v001_technical_design.md#td-trace"
+      ],
+      "tests": [
+        "TC-HTTP-01",
+        "TC-HTTP-02",
+        "TC-HTTP-03",
+        "TC-HTTP-04",
+        "TC-HTTP-05",
+        "TC-HTTP-07",
+        "TC-IPC-03",
+        "TC-HTTP-06",
+        "TC-SSE-01",
+        "TC-SSE-02",
+        "TC-SSE-03",
+        "TC-SSE-04",
+        "TC-TRACE-01",
+        "TC-TRACE-02",
+        "TC-TRACE-03",
+        "TC-TRACE-06",
+        "TC-TRACE-07",
+        "TC-TRACE-08",
+        "TC-MAP-04"
+      ]
+    },
+    {
+      "id": "func_11",
+      "name": "Prompt 创建",
+      "designs": [
+        "evalit_v001_technical_design.md#td-llm"
+      ],
+      "tests": [
+        "TC-LLM-02",
+        "TC-LLM-03",
+        "TC-VER-03"
+      ]
+    },
+    {
+      "id": "func_12",
+      "name": "评估计划管理",
+      "designs": [
+        "evalit_v001_technical_design.md#td-plan"
+      ],
+      "tests": [
+        "TC-LIFE-01",
+        "TC-PLAN-01"
+      ]
+    },
+    {
+      "id": "func_13",
+      "name": "评估计划新建",
+      "designs": [
+        "evalit_v001_technical_design.md#td-mapping",
+        "evalit_v001_technical_design.md#td-plan",
+        "evalit_v001_technical_design.md#td-trace"
+      ],
+      "tests": [
+        "TC-MAP-01",
+        "TC-MAP-02",
+        "TC-MAP-03",
+        "TC-MAP-04",
+        "TC-MAP-05",
+        "TC-PLAN-01",
+        "TC-TRACE-04",
+        "TC-TRACE-05"
+      ]
+    },
+    {
+      "id": "func_14",
+      "name": "评估运行执行",
+      "designs": [
+        "evalit_v001_technical_design.md#td-run",
+        "evalit_v001_technical_design.md#td-recovery",
+        "evalit_v001_technical_design.md#td-storage"
+      ],
+      "tests": [
+        "TC-RUN-01",
+        "TC-RUN-02",
+        "TC-RUN-03",
+        "TC-RUN-04",
+        "TC-RUN-05",
+        "TC-RUN-06",
+        "TC-RUN-07",
+        "TC-REC-01",
+        "TC-REC-02",
+        "TC-REC-03"
+      ]
+    },
+    {
+      "id": "func_15",
+      "name": "执行管理与导出",
+      "designs": [
+        "evalit_v001_technical_design.md#td-export",
+        "evalit_v001_technical_design.md#td-errors",
+        "evalit_v001_technical_design.md#td-ipc"
+      ],
+      "tests": [
+        "TC-MET-01",
+        "TC-MET-02",
+        "TC-XLSX-01",
+        "TC-XLSX-02",
+        "TC-XLSX-03",
+        "TC-OUT-03",
+        "TC-RUN-05"
+      ]
+    },
+    {
+      "id": "func_16",
+      "name": "版本与回滚",
+      "designs": [
+        "evalit_v001_technical_design.md#td-version",
+        "evalit_v001_technical_design.md#td-storage"
+      ],
+      "tests": [
+        "TC-VER-01",
+        "TC-VER-02",
+        "TC-VER-03",
+        "TC-RUN-04"
+      ]
+    },
+    {
+      "id": "func_17",
+      "name": "测试集编辑",
+      "designs": [
+        "evalit_v001_technical_design.md#td-dataset",
+        "evalit_v001_technical_design.md#td-version"
+      ],
+      "tests": [
+        "TC-DATA-05",
+        "TC-VER-02",
+        "TC-VER-03"
+      ]
+    },
+    {
+      "id": "func_18",
+      "name": "评估对象编辑",
+      "designs": [
+        "evalit_v001_technical_design.md#td-http",
+        "evalit_v001_technical_design.md#td-version"
+      ],
+      "tests": [
+        "TC-VER-04",
+        "TC-VER-03",
+        "TC-HTTP-03",
+        "TC-HTTP-05",
+        "TC-SSE-03"
+      ]
+    },
+    {
+      "id": "func_19",
+      "name": "评估器编辑",
+      "designs": [
+        "evalit_v001_technical_design.md#td-version",
+        "evalit_v001_technical_design.md#td-sandbox",
+        "evalit_v001_technical_design.md#td-llm"
+      ],
+      "tests": [
+        "TC-VER-03",
+        "TC-SB-01",
+        "TC-LLM-02",
+        "TC-OUT-02"
+      ]
+    },
+    {
+      "id": "func_20",
+      "name": "评估计划编辑",
+      "designs": [
+        "evalit_v001_technical_design.md#td-plan",
+        "evalit_v001_technical_design.md#td-mapping",
+        "evalit_v001_technical_design.md#td-version"
+      ],
+      "tests": [
+        "TC-PLAN-02",
+        "TC-MAP-03",
+        "TC-VER-03"
+      ]
+    }
+  ],
+  "engineering": [
+    {
+      "id": "ENG-TDD",
+      "designs": [
+        "tdd_workflow.md#td-tdd-order",
+        "tdd_workflow.md#td-tdd-evidence",
+        "tdd_workflow.md#td-tdd-gates"
+      ],
+      "tests": [
+        "TC-TDD-01",
+        "TC-TDD-02",
+        "TC-TDD-03",
+        "TC-TDD-04",
+        "TC-TDD-05",
+        "TC-DOC-01"
+      ]
+    },
+    {
+      "id": "ENG-SECURITY",
+      "designs": [
+        "evalit_v001_technical_design.md#td-security",
+        "evalit_v001_technical_design.md#td-sandbox",
+        "evalit_v001_technical_design.md#td-ipc"
+      ],
+      "tests": [
+        "TC-SEC-01",
+        "TC-SEC-02",
+        "TC-SB-02",
+        "TC-SB-03",
+        "TC-HTTP-06",
+        "TC-IPC-01"
+      ]
+    },
+    {
+      "id": "ENG-MIGRATION",
+      "designs": [
+        "evalit_v001_technical_design.md#td-storage",
+        "evalit_v001_technical_design.md#td-delivery"
+      ],
+      "tests": [
+        "TC-MIG-01",
+        "TC-PACK-01"
+      ]
+    },
+    {
+      "id": "ENG-RECOVERY",
+      "designs": [
+        "evalit_v001_technical_design.md#td-recovery",
+        "evalit_v001_technical_design.md#td-run"
+      ],
+      "tests": [
+        "TC-REC-01",
+        "TC-REC-02",
+        "TC-REC-03",
+        "TC-REC-04",
+        "TC-REC-05",
+        "TC-RUN-03"
+      ]
+    },
+    {
+      "id": "ENG-UI",
+      "designs": [
+        "evalit_v001_technical_design.md#td-ui",
+        "evalit_v001_technical_design.md#td-limits",
+        "evalit_v001_technical_design.md#td-ipc"
+      ],
+      "tests": [
+        "TC-UI-01",
+        "TC-UI-02",
+        "TC-UI-03",
+        "TC-IPC-02",
+        "TC-PERF-01"
+      ]
+    },
+    {
+      "id": "ENG-COMPATIBILITY",
+      "designs": [
+        "evalit_v001_technical_design.md#td-langfuse",
+        "decisions.md#adr-005",
+        "evalit_v001_technical_design.md#td-delivery"
+      ],
+      "tests": [
+        "TC-LF-05",
+        "TC-LF-06",
+        "TC-LF-07",
+        "TC-TRACE-08",
+        "TC-LLM-01",
+        "TC-PACK-01"
+      ]
+    }
+  ]
+}
